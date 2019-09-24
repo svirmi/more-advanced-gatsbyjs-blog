@@ -4,4 +4,21 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-// You can delete this file if you're not using it
+exports.sourceNodes = ({ actions, createNodeId, createContentDigest }) => {
+    const myData = {
+        key: 123,
+        foo: `The foo field of my node`,
+        bar: `Baz`
+    };
+
+    const newNode = {
+        ...myData,
+        id: createNodeId(`my-data-${myData.key}`),
+        internal: {
+            type: 'TestNode',
+            contentDigest: createContentDigest(myData)
+        }
+    };
+
+    actions.createNode(newNode);
+};
