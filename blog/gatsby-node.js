@@ -18,27 +18,32 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
 
     const result = await axios({
         method: "GET",
-        url: api_url
+        url: api_url,
+        headers: {
+            accept: 'application/json',
+        },
+    }).catch(error => {
+        console.error(error.message);
     });
 
-    console.log(result.data);
+    console.log(result.data[1]);
 
-    const myData = {
-        title: "Double quoted title field",
-        description: "Double quoted description field",
-        key: 123,
-        foo: `The foo field of my node`,
-        bar: `Baz`
-    };
-
-    const newNode = {
-        ...myData,
-        id: createNodeId(`my-data-${myData.key}`),
-        internal: {
-            type: 'TestNode',
-            contentDigest: createContentDigest(myData)
-        }
-    };
-
-    actions.createNode(newNode);
+    // const myData = {
+    //     title: "Double quoted title field",
+    //     description: "Double quoted description field",
+    //     key: 123,
+    //     foo: `The foo field of my node`,
+    //     bar: `Baz`
+    // };
+    //
+    // const newNode = {
+    //     ...myData,
+    //     id: createNodeId(`my-data-${myData.key}`),
+    //     internal: {
+    //         type: 'TestNode',
+    //         contentDigest: createContentDigest(myData)
+    //     }
+    // };
+    //
+    // actions.createNode(newNode);
 };
