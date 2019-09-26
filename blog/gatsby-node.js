@@ -26,24 +26,19 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest }) => 
         console.error(error.message);
     });
 
-    console.log(result.data[1]);
+    const articles = result.data;
 
-    // const myData = {
-    //     title: "Double quoted title field",
-    //     description: "Double quoted description field",
-    //     key: 123,
-    //     foo: `The foo field of my node`,
-    //     bar: `Baz`
-    // };
-    //
-    // const newNode = {
-    //     ...myData,
-    //     id: createNodeId(`my-data-${myData.key}`),
-    //     internal: {
-    //         type: 'TestNode',
-    //         contentDigest: createContentDigest(myData)
-    //     }
-    // };
-    //
-    // actions.createNode(newNode);
+    articles.forEach(article => {
+       article.wam_id = article.id;
+       const node = {
+           ...article,
+           id: createNodeId(`Article-${article.id}`),
+           internal: {
+               type: 'Article',
+               contentDigest: createContentDigest(article),
+           }
+       };
+
+       actions.createNode(node);
+    });
 };
