@@ -9,6 +9,13 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-catch-links`,
     {
+      resolve: `gatsby-plugin-remote-images`,
+      options: {
+        nodeType: 'Article',
+        imagePath: 'featuredImage.imageUrl',
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
