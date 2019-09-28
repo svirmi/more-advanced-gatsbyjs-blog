@@ -1,6 +1,12 @@
 import React from "react";
+import {
+    Card, CardImg, CardText, CardBody,
+    CardTitle, CardSubtitle
+} from 'reactstrap';
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
+import Layout from "../components/layout";
+import SEO from "../components/seo";
 
 export const query = graphql`
 {
@@ -25,7 +31,7 @@ export const query = graphql`
 
       localImage {
         childImageSharp {
-          fluid(maxWidth: 400, maxHeight: 350) {
+          fluid(maxWidth: 700, maxHeight: 500) {
             base64
             tracedSVG
             aspectRatio
@@ -48,15 +54,23 @@ export const query = graphql`
 ;
 
 export default ({ data }) => <>
-    <h1>Articles</h1>
-    <ul>
-        { data.allArticle.nodes.map(article => (
-            <li key={article.id}>
-                <h2>{article.title}</h2>
-                <p>{article.summary}</p>
-                <p>Published at {article.publishedAt}</p>
-                <Img fluid={article.localImage.childImageSharp.fluid} />
-            </li>
-        ))}
-    </ul>
+
+    <Layout>
+        <SEO title="Articles" />
+        <h1>Articles</h1>
+
+            { data.allArticle.nodes.map(article => (
+
+                <Card key={article.id}>
+                    <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" />
+                        <Img fluid={article.localImage.childImageSharp.fluid} />
+                    <CardBody>
+                        <CardTitle>{article.title}</CardTitle>
+                        <CardSubtitle>{article.summary}</CardSubtitle>
+                        <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+                    </CardBody>
+                </Card>
+
+            ))}
+    </Layout>
 </>

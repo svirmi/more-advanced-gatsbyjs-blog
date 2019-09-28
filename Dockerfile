@@ -1,10 +1,12 @@
-FROM node:alpine
+#FROM alpine:3.7
 
-RUN apk update && \
-    apk add --update --repository http://dl-3.alpinelinux.org/alpine/edge/community vips-tools vips-dev fftw-dev gcc g++ make libc6-compat && \
-    apk add --no-cache bash git && \
-    apk add python && \
-    rm -rf /var/cache/apk/*
+FROM node:10
+
+#RUN apk update && \
+#    apk add --update --repository http://dl-3.alpinelinux.org/alpine/edge/community vips-tools vips-dev fftw-dev gcc g++ make libc6-compat && \
+#    apk add --no-cache bash git && \
+#    apk add python && \
+#    rm -rf /var/cache/apk/*
 
 WORKDIR /app
 RUN yarn global add gatsby-cli
