@@ -5,7 +5,7 @@
  */
 
 require('dotenv').config({
-    path: `.env.${process.env.NODE_ENV}`  // looking for .env.development file
+    path: `.env.${process.env.NODE_ENV}`  // looks for .env.development config file in the project root folder
 });
 
 const axios = require('axios');

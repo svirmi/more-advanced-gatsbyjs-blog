@@ -1,6 +1,6 @@
 import React from "react";
 import {
-    Card, CardImg, CardText, CardBody,
+    Card, CardText, CardBody,
     CardTitle, CardSubtitle
 } from 'reactstrap';
 import { graphql } from "gatsby";
@@ -62,8 +62,7 @@ export default ({ data }) => <>
             { data.allArticle.nodes.map(article => (
 
                 <Card key={article.id}>
-                    <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" />
-                        <Img fluid={article.localImage.childImageSharp.fluid} />
+                    <Img fluid={article.localImage.childImageSharp.fluid} />
                     <CardBody>
                         <CardTitle>{article.title}</CardTitle>
                         <CardSubtitle>{article.summary}</CardSubtitle>
