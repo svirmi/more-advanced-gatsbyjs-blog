@@ -62,7 +62,7 @@ export default ({ data }) => <>
             { data.allArticle.nodes.map(article => (
 
                 <Card key={article.id}>
-                    <Img fluid={article.localImage.childImageSharp.fluid} />
+                    {/*<Img fluid={article.localImage.childImageSharp.fluid} />*/}
                     <CardBody>
                         <CardTitle>{article.title}</CardTitle>
                         <CardSubtitle>{article.summary}</CardSubtitle>

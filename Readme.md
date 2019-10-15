@@ -8,6 +8,8 @@ docker build -t gatsby-blog .
 ### to spin up container run
 ```bash
 docker run -it --rm -p 8000:8000 -u $(id -u ${USER}):$(id -g ${USER}) -v ${PWD}:/app gatsby-blog /bin/sh
+
+docker run -it --rm -p 8000:8000 -u $(id -u ${USER}):$(id -g ${USER}) -v ${PWD}:/app advanced-gatsby-blog-yt
 ``` 
 
 ### and finally create new gatsby project (run inside the container)
